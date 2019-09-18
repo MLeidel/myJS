@@ -2,12 +2,6 @@
 	myJS-1.2.js
 	09/08/2019 54 functions
 	Michael D Leidel
-	Version: many date fixes. Added Dateobj.
-	Updated /config/myJSref.html
-	See ES6/myDates.html
-	addClass, delClass
-	doq uses arrow func
-	fixed JS.show
 */
 'use strict';
 
