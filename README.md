@@ -317,6 +317,22 @@ returns a float value
 
 -----
 
+### open html modal dialog
+**JS.dlgOpen( qs )**
+```Javascript
+JS.dlgOpen("dialog");
+```
+
+-----
+
+### close html modal dialog
+**JS.dlgClose( qs )**
+```Javascript
+JS.dlgClose("dialog")
+```
+
+-----
+
 <a name="cook"></a>
 ## COOKIE FUNCTIONS [^](#top 'top')
 
