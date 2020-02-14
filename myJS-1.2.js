@@ -2,11 +2,17 @@
 	myJS-1.2.js
 	09/08/2019 54 functions
 	Michael D Leidel
+	Version: many date fixes. Added Dateobj.
+	Updated /config/myJSref.html
+	See ES6/myDates.html
+	addClass, delClass
+	doq uses arrow func
+	fixed JS.show
 */
 'use strict';
 
 const JS = {
-  
+
   doq : qs => document.querySelector(qs),
 
 	htm : function(qs,val) {
@@ -30,12 +36,12 @@ const JS = {
     let m = JS.doq(qs);
     m.classList.add(cname);
   },
-  
+
   delClass : function(qs, cname) {
     let m = JS.doq(qs);
     m.classList.remove(cname);
   },
-  
+
 	gss : function(qs, cssx) {
 		let m = JS.doq(qs);
 		let prop = window.getComputedStyle(m, null).getPropertyValue(cssx);
@@ -95,16 +101,16 @@ const JS = {
 		.then(function(jobj) {
 			webresponse(n, jobj);	// user function to handle json object
 		})
-			.catch(function(error) {	
+			.catch(function(error) {
 				webresponse(n, "error");	// return "error" instead of json
 			});
 	},
 
 	webpost : function(url, n, qs) {
-		fetch(url, {	
-			method: 'post',	
-			headers: {	
-				"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"	
+		fetch(url, {
+			method: 'post',
+			headers: {
+				"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
 			},
 			body: qs
 			})
@@ -114,28 +120,28 @@ const JS = {
 			.then(function (text) {
 				webresponse(n, text);	// user function to handle response
 			})
-			.catch(function (error) {	
-				console.log('Request failed', error);	
+			.catch(function (error) {
+				console.log('Request failed', error);
 			});
 	},
 
 	websend : function(url, qs) {
-		fetch(url, {	
-			method: 'post',	
-			headers: {	
-				"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"	
+		fetch(url, {
+			method: 'post',
+			headers: {
+				"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
 			},
 			body: qs
 			})
-			.catch(function (error) {	
-				console.log('Request failed', error);	
+			.catch(function (error) {
+				console.log('Request failed', error);
 			});
 	},
 
 	// START DATE FUNCTIONS
 
 	twoDigitDate : function(n) {
-		if (n < 10) 
+		if (n < 10)
 			return "0" + n;
 		else
 			return n;
@@ -324,6 +330,13 @@ const JS = {
 		}
 	},
 
+  dlgOpen : function(qs) {
+    return JS.doq(qs).show();
+  },
+  dlgClose : function(qs) {
+    return JS.doq(qs).close();
+  },
+
 	/*
 	COOKIE FUNCTIONS:
 			setCookie( cname, cvalue [, exdays] )
@@ -350,7 +363,7 @@ const JS = {
 		for(let i=0; i<ca.length; i++) {
 						let c = ca[i];
 						while (c.charAt(0)==' ') c = c.substring(1);
-						if (c.indexOf(name) != -1) 
+						if (c.indexOf(name) != -1)
 							return c.substring(name.length, c.length);
 		}
 		return "";
