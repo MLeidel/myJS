@@ -1,0 +1,4 @@
+wget https://michaelleidel.net/doc/myJSrefer.md
+mv myJSrefer.md README.md
+wget https://michaelleidel.net/js/myJS-1.2.js
+wget https://michaelleidel.net/js/myJS-1.2.min.js

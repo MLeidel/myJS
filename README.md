@@ -1,3 +1,8 @@
+{<style>
+body {
+  font: normal 12pt sans-serif;
+}
+</style>}
 
 <a name="top"></a>
 # myJS function Reference
@@ -373,12 +378,21 @@ unless you provide one.
 
 -----
 
-### day of month
+### month number
 **JS.todayMon([DateObj])**
 ```Javascript
 let mnbr = JS.todayMon();
 ```
 Returns digit 1..12
+
+-----
+
+### date (number) of month
+**JS.getDOM([DateObj])**
+```Javascript
+let dnbr = JS.getDOM();
+```
+Returns digit 1..31
 
 -----
 
@@ -410,7 +424,16 @@ let ymd = JS.getYMD();
 ```Javascript
 let hm = JS.getHM();
 ```
-Returns time in HH:MM formatl
+Returns time in HH:MM format
+
+-----
+
+### Hours:Minutes am/pm
+**JS.getHM12()**
+```Javascript
+let hm12 = JS.getHM12();
+```
+Returns time in 12 hour HH:MM am/pm format
 
 -----
 
@@ -420,26 +443,27 @@ Returns time in HH:MM formatl
 let objDate = JS.addDays(15); // today + 15 days
 ```
 Returns new date object.
+
 -----
 
 ### Month (short)
 **JS.getShortMon(n)**
 ```Javascript
-let smonth = JS.getShortMon(n);
+let smonth = JS.getShortMon(11);
 ```
-Returns 3 character month, like: Nov
-n = the month number 1-12.
+Returns 3 character month, like: "Nov"  
+n = the month number 1-12 or (_JS.todayMon()_)
 
 -----
 
 ### Month (long)
 **JS.getLongMon(n)**
 ```Javascript
-let month = JS.getLongMon(11);
+let month = JS.getLongMon(JS.todayMon());
 ```
-Returns month spelled out, like: November
-n = the month number 1-12.
-
+Returns month spelled out, like: "November"  
+n = the month number 1-12 or (_JS.todayMon()_)
+  
 -----
 
 ### Day (short)
@@ -447,40 +471,41 @@ n = the month number 1-12.
 ```Javascript
 let sday = JS.getShortDay(3); // Wed
 ```
-Returns 3 character day of week.
+Returns 3 character day of week.  
+n = the day number 0-6 or (_JS.todayDay()_)
 
 -----
 
 ### Day (long)
 **JS.getLongDay(n)**
 ```Javascript
-let day = JS.getLongDay(3); // Wednesday
+let day = JS.getLongDay(JS.todayDay()); // Wednesday
 ```
-Returns day of week spelled out.
+Returns day of week spelled out.  
+n = the day number 0-6.
 
 -----
 
 ```Javascript
 //Examples of date output
-JS.getMDY()                   // 08/29/2019
-JS.getYMD()                   // 2019-08-29
-JS.getHM()                    // 10
-JS.todayMon()                 // 08
-JS.todayDay()                 // 4
-JS.getShortDay(JS.todayDay()) // Thu
-JS.getLongDay(JS.todayDay())  // Thursday
-JS.getShortMon(JS.todayMon()) // Aug
-JS.getLongMon(JS.todayMon())  // Sepember
-JS.todayYear();               // 2019
-let mydate = JS.addDays(8);   // + 8 days
-JS.getYMD(mydate)             // 2019-09-06
-JS.getMDY(mydate)             // 09/06/2019
-JS.getShortMon(JS.todayMon(mydate))
-                            // Sep
-JS.getLongDay(JS.todayDay(mydate));
-                            // Friday
+
+ JS.getMDY()                   // 03/20/2022
+ JS.getYMD()                   // 2022-03-20
+ JS.getHM()                    // 11:19
+ JS.getHM12()                  // 11:19 am
+ JS.todayDay()                 // 0
+ JS.getShortDay(JS.todayDay()) // Sun
+ JS.getLongDay(JS.todayDay())  // Sunday
+ JS.getShortMon(JS.todayMon()) // Mar
+ JS.getLongMon(JS.todayMon())  // March
+ JS.todayMon()                 // 3
+ JS.getDOM()                   // 20
+ JS.todayYear()                // 2022
+ let mydate = JS.addDays(8);   // + 8 days
+ JS.getYMD(mydate)             // 2022-03-28
+ JS.getMDY(mydate)             // 03/28/2022
+ JS.getShortMon(JS.todayMon(mydate)) // Mar
+ JS.getLongDay(JS.todayDay(mydate))  // Monday
 ```
 
-
-
-###### Here endith this document
+###### Here endith the document

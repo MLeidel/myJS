@@ -2,12 +2,7 @@
 	myJS-1.2.js
 	09/08/2019 54 functions
 	Michael D Leidel
-	Version: many date fixes. Added Dateobj.
-	Updated /config/myJSref.html
-	See ES6/myDates.html
-	addClass, delClass
-	doq uses arrow func
-	fixed JS.show
+  Mar 2022 day of month
 */
 'use strict';
 
@@ -158,6 +153,17 @@ const JS = {
 		return d.getDay();
 	},
 
+	getDOM : function(objdate) {
+		// Day of Week Index 0..6
+		let d;
+		if (objdate !== undefined) {
+		  d = objdate;
+		} else {
+		  d = new Date();
+		}
+		return d.getDate();
+	},
+
 	todayMon : function(objdate) {
     let d;
 		if (objdate !== undefined) {
@@ -211,6 +217,18 @@ const JS = {
 		return curr_Hour + ":" + curr_Minute;
 	},
 
+  getHM12 : function() {
+    let date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    let strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
+  },
+
 	getShortDay : function(n) {
 		// Sunday = 0 ...
 		let d = new Array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
@@ -229,8 +247,8 @@ const JS = {
 	},
 
 	getLongMon : function(n) {
-		// January = 0 ...
-		let m = new Array('January','February','March','April','May','June','July','August','September','October','November','December');
+		// January = 1 ...
+		let m = new Array('','January','February','March','April','May','June','July','August','September','October','November','December');
 		return m[n];
 	},
 
